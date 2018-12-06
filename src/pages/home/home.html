@@ -10,21 +10,29 @@
 </ion-header>
 
 <ion-content>
+    <header class="today" ion-fixed>
+        <strong>Today : </strong> {{ current_date }}
+    </header>
+
     <ion-list class="items-list">
         <ion-item (click)="deletePrompt(i)" *ngFor="let item of items_list; let i = index">
             <h2 *ngIf="item.title.length == 0"> N/A </h2>
             <h2 *ngIf="item.title.length > 0"> {{ item.title }} </h2>
             <p> {{ formatDate(item.date) }} </p>
             <div item-end *ngIf="item.amount"> {{ item.amount }} </div>
-            <div item-end *ngIf="!item.amount"> Apparently it was free </div>
+            <div item-end *ngIf="!item.amount"> N/A </div>
         </ion-item>
     </ion-list>
+
+    <button class="clear-button" ion-button color="light" *ngIf="items_list.length > 0" (click)="clearPrompt()">
+        Clear All
+    </button>
 
     <ion-fab bottom right>
         <button ion-fab><ion-icon name="ios-more"></ion-icon></button>
         <ion-fab-list side="top">
             <button (click)="addToLog()" ion-fab><ion-icon name="md-add"></ion-icon></button>
-            <button ion-fab><ion-icon name="ios-stats"></ion-icon></button>
+            <button (click)="gotToStats()" ion-fab><ion-icon name="ios-stats"></ion-icon></button>
         </ion-fab-list>
     </ion-fab>
 

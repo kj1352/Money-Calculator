@@ -1,3 +1,47 @@
 page-stats {
+    .scroll-content {
+        background-color: #19212b;
+        overflow-x: auto;
+        text-align: center;
+    }
 
+    .toolbar-background {
+        background-color: #19212b;
+    }
+
+    .toolbar-title {
+        color: grey;
+    }
+
+    .show-back-button {
+        color: grey;
+    }
+
+
+    .text {
+        color: grey;
+        margin: 20px auto;
+        font-size: 16px;
+        position: sticky;
+        width: 100%;
+        left: 0;
+    }
+
+    .ct-chart {
+        width: 200vw;
+    }
+
+    .ct-series-a {
+        .ct-line {
+            fill: transparent;
+        }
+        .ct-area {
+            fill: dimgrey;
+        }
+    }
+
+    .ct-labels {
+        color: white;
+        font-weight: 200;
+    }
 }

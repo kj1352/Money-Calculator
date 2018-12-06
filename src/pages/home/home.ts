@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
 import * as moment from 'moment';
+import { StatsPage } from '../stats/stats';
 
 @Component({
   selector: 'page-home',
@@ -11,10 +12,12 @@ import * as moment from 'moment';
 export class HomePage {
     total = 0;
     items_list = [];
+    current_date : any;
 
   constructor(public navCtrl: NavController,
     public alertCtrl: AlertController,
     public actionSheetCtrl: ActionSheetController) {
+        this.current_date = moment().format('DD MMMM YYYY');
 
         if (localStorage.items_list === undefined || localStorage.items_list === null) {
             console.log("No items");
@@ -43,6 +46,34 @@ export class HomePage {
       ]
     });
     actionSheet.present();
+  }
+
+  clearPrompt() {
+    const actionSheet = this.actionSheetCtrl.create({
+        title: 'Are you Sure?',
+      buttons: [
+        {
+          text: 'Yes, Clear All My Data',
+          role: 'destructive',
+          handler: () => {
+            this.clearData();
+          }
+        }, {
+          text: 'Cancel',
+          handler: () => {
+
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+
+  clearData() {
+      this.items_list = [];
+      localStorage.items_list = JSON.stringify(this.items_list);
+      this.calculateTotal();
   }
 
   editItem(i) {
@@ -139,6 +170,10 @@ export class HomePage {
       localStorage.items_list = JSON.stringify(this.items_list);
       this.calculateTotal();
       console.log(this.items_list);
+  }
+
+  gotToStats() {
+      this.navCtrl.push(StatsPage);
   }
 
   calculateTotal() {

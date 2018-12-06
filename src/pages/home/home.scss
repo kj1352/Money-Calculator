@@ -1,3 +1,56 @@
 page-home {
+    .scroll-content {
+        background-color: #19212b;
+    }
 
+    .toolbar-background {
+        background-color: #19212b;
+    }
+
+    .toolbar {
+        button {
+            color: rgba(white, 0.8);
+            font-size: 16px;
+            letter-spacing: 0.5px;
+
+            span {
+                padding-right: 10px;
+            }
+        }
+    }
+
+    .toolbar-title {
+        font-size: 20px;
+        color: grey;
+    }
+
+    .items-list {
+        min-height: 50vh;
+    }
+
+    .list {
+        .item {
+            background-color: transparent;
+            border-bottom: 1px solid #1f2833;
+            color: rgba(white, 0.6);
+
+            h2 {
+                white-space: normal;
+                font-weight: 300;
+            }
+
+            .item-inner {
+                border-bottom: 0;
+            }
+        }
+    }
+
+    .fab {
+        background-color: #c55b5b;
+    }
+
+    .fab-md-in-list {
+        color: #f7f7f7;
+        background-color: #313f50;
+    }
 }
